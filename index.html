@@ -9,11 +9,23 @@
         background-color: #121212;
         color: #f5f5f5; /*text color */
       }
+      #parentdiv {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
     </style>
   </head>
   <body>
     <script src="https://unpkg.com/htmx.org@2.0.1"></script>
-    <!-- have a button POST a click via AJAX -->
-    <button hx-post="/clicked" hx-swap="outerHTML">Click Me</button>
+
+    <div id="parentdiv">
+      <!-- have a button POST a click via AJAX -->
+      <button hx-post="/clicked" hx-swap="outerHTML" hx-target="#lildiv">
+        Click Me
+      </button>
+      <div id="lildiv">This is a lil div.</div>
+    </div>
   </body>
 </html>
