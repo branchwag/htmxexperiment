@@ -31,13 +31,21 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 		http.NotFound(w, r)
 		return
 	}
-
 	http.ServeFile(w, r, filepath.Join(".", "index.html"))
+}
+
+func otherpageHandler(w http.ResponseWriter, r *http.Request) {
+	if r.URL.Path != "/otherpage" {
+		http.NotFound(w, r)
+		return
+	}
+	http.ServeFile(w, r, filepath.Join(".", "otherpage.html"))
 }
 
 func main() {
 	http.HandleFunc("/", indexHandler)
 	http.HandleFunc("/clicked", clickedHandler)
+	http.HandleFunc("/otherpage", otherpageHandler)
 
 	fmt.Println("Starting server on :4242")
 	if err := http.ListenAndServe(":4242", nil); err != nil {

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Homepage</title>
+    <title>Other Page</title>
     <style>
       body {
         background-color: #121212;
@@ -21,13 +21,7 @@
     <script src="https://unpkg.com/htmx.org@2.0.1"></script>
 
     <div id="parentdiv">
-      <!-- have a button POST a click via AJAX -->
-      <button hx-post="/clicked" hx-swap="outerHTML" hx-target="#lildiv">
-        Click Me
-      </button>
-      <div id="lildiv">This is a lil div.</div>
-
-      <button hx-get="/otherpage" hx-target="body">Another Page</button>
+      <div id="lildiv">This is another page.</div>
     </div>
   </body>
 </html>
