@@ -28,6 +28,17 @@
       <div id="lildiv">This is a lil div.</div>
 
       <button hx-get="/otherpage" hx-target="body">Another Page</button>
+
+      <h2>issa form</h2>
+      <form hx-post="/submit" hx-swap="outerHTML">
+        <label for="name">Name:</label><br />
+        <input type="text" id="name" name="name" required /><br /><br />
+        <label for="email">Email:</label><br />
+        <input type="email" id="email" name="email" required /><br /><br />
+        <input type="submit" value="Submit" />
+      </form>
+
+      <div id="response"></div>
     </div>
   </body>
 </html>
