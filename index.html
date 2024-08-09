@@ -16,6 +16,21 @@
         align-items: center;
         flex-direction: column;
       }
+      #clicked {
+        margin-bottom: 10px;
+      }
+      #lildiv {
+        margin-bottom: 10px;
+      }
+      #response {
+        margin-bottom: 10px;
+      }
+      #replacebutton {
+        margin-top: 100px;
+        position: absolute;
+        top: 40px;
+        left: 40px;
+      }
     </style>
   </head>
   <body>
@@ -23,12 +38,15 @@
 
     <div id="parentdiv">
       <!-- have a button POST a click via AJAX -->
-      <button hx-post="/clicked" hx-swap="outerHTML" hx-target="#lildiv">
+      <button
+        id="clicked"
+        hx-post="/clicked"
+        hx-swap="outerHTML"
+        hx-target="#lildiv"
+      >
         Click Me
       </button>
       <div id="lildiv">This is a lil div.</div>
-
-      <button hx-get="/otherpage" hx-target="body">Another Page</button>
 
       <h2>issa form</h2>
       <form hx-post="/submit" hx-swap="outerHTML">
@@ -40,6 +58,10 @@
       </form>
 
       <div id="response"></div>
+
+      <button id="replacebutton" hx-get="/otherpage" hx-target="body">
+        Replace this page
+      </button>
     </div>
   </body>
 </html>
