@@ -31,6 +31,9 @@
         top: 40px;
         left: 40px;
       }
+      #exampleform {
+        margin-bottom: 10px;
+      }
     </style>
   </head>
   <body>
@@ -46,7 +49,18 @@
       >
         Click Me
       </button>
-      <div id="lildiv">This is a lil div.</div>
+      <div id="lildiv">This is a lil div. Enter 'foo' in the box below.</div>
+
+      <form id="exampleform" hx-post="/test">
+        <input
+          name="example"
+          onkeyup="this.setCustomValidity('') // reset the validation on keyup"
+          hx-on:htmx:validation:validate="if(this.value != 'foo') {
+                        this.setCustomValidity('Please enter the value foo') // set the validation error
+                          htmx.find('#exampleform').reportValidity();  // report the issue
+                        }"
+        />
+      </form>
 
       <div
         id="hoverdiv"

@@ -16,6 +16,7 @@ import (
 
 const divHTML = `<div id="response">Button was clicked!</div>`
 const formSubmitHTML = `<div id="response">Form submitted!</div>`
+const fooHTML = `<div id="response">You fooed it up!</div>`
 
 //loads the environment vars
 func LoadEnv(filename string) error {
@@ -53,6 +54,22 @@ func clickedHandler(w http.ResponseWriter, r *http.Request) {
 		if err := t.Execute(w, nil); err != nil {
 			http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 		}
+	} else {
+		http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
+	}
+}
+
+func testHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		t, err := template.New("testresponse").Parse(fooHTML)
+		if err != nil {
+			http.Error(w, "Internal Foo Error", http.StatusInternalServerError)
+		}
+
+		w.Header().Set("Content-Type", "text/html")
+		if err := t.Execute(w, nil); err != nil {
+			http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+		} 
 	} else {
 		http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
 	}
@@ -148,6 +165,7 @@ func main() {
 	http.HandleFunc("/clicked", clickedHandler)
 	http.HandleFunc("/otherpage", otherpageHandler)
 	http.HandleFunc("/submit", submitHandler)
+	http.HandleFunc("/test", testHandler)
 
 	fmt.Println("Starting server on :4242")
 	if err := http.ListenAndServe(":4242", nil); err != nil {
