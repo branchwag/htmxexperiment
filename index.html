@@ -48,6 +48,14 @@
       </button>
       <div id="lildiv">This is a lil div.</div>
 
+      <div
+        id="hoverdiv"
+        hx-on:mouseover="this.style.backgroundColor = 'orange';"
+        hx-on:mouseout="this.style.backgroundColor = '';"
+      >
+        Hover over me
+      </div>
+
       <h2>issa form</h2>
       <form hx-post="/submit" hx-swap="outerHTML">
         <label for="name">Name:</label><br />
