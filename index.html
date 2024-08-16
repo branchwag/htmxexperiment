@@ -11,6 +11,7 @@
         margin-top: 50px;
       }
       #parentdiv {
+        background-color: #121212;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -33,6 +34,9 @@
       }
       #exampleform {
         margin-bottom: 10px;
+      }
+      #uploadsection {
+        margin-top: 50px;
       }
     </style>
   </head>
@@ -84,6 +88,20 @@
       <button id="replacebutton" hx-get="/otherpage" hx-target="body">
         Replace this page
       </button>
+      <div id="uploadsection">
+        <h1>Upload a File</h1>
+        <form
+          id="upload-form"
+          hx-post="/upload"
+          hx-target="#result"
+          hx-swap="innerHTML"
+          enctype="multipart/form-data"
+        >
+          <input type="file" name="file" />
+          <button type="submit">Upload</button>
+        </form>
+        <div id="result"></div>
+      </div>
     </div>
   </body>
 </html>
