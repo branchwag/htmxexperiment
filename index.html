@@ -25,6 +25,7 @@
       }
       #response {
         margin-bottom: 10px;
+        margin-top: 50px;
       }
       #replacebutton {
         margin-top: 100px;
@@ -38,6 +39,12 @@
       #uploadsection {
         margin-top: 50px;
       }
+      #lildiv2 {
+        margin-bottom: 30px;
+      }
+      #hoverdiv {
+        margin-top: 50px;
+      }
     </style>
   </head>
   <body>
@@ -49,10 +56,11 @@
         id="clicked"
         hx-post="/clicked"
         hx-swap="outerHTML"
-        hx-target="#lildiv"
+        hx-target="#lildiv2"
       >
         Click Me
       </button>
+      <div id="lildiv2">Some Text</div>
       <div id="lildiv">This is a lil div. Enter 'foo' in the box below.</div>
 
       <form id="exampleform" hx-post="/test">
@@ -88,6 +96,7 @@
       <button id="replacebutton" hx-get="/otherpage" hx-target="body">
         Replace this page
       </button>
+
       <div id="uploadsection">
         <h1>Upload a File</h1>
         <form
