@@ -19,7 +19,6 @@ const divHTML = `<div id="response">Button was clicked!</div>`
 const formSubmitHTML = `<div id="response">Form submitted!</div>`
 const fooHTML = `<div id="response">You fooed it up!</div>`
 
-//loads the environment vars
 func LoadEnv(filename string) error {
 	file, err := os.Open(filename)
 	if err != nil {
@@ -202,7 +201,9 @@ func main() {
 	http.HandleFunc("/upload", uploadHandler)
 
 	fmt.Println("Starting server on :4242")
-	if err := http.ListenAndServe(":4242", nil); err != nil {
+	if err := http.ListenAndServeTLS(":4242", "server.crt", "server.key", nil); err != nil {
 		log.Fatalf("Could not start server: %s\n", err.Error())
 	}
 }
+
+//https://localhost:4242

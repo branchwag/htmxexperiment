@@ -2,3 +2,5 @@
 .env
 /old
 notes.txt
+server.crt
+server.key
