@@ -201,6 +201,10 @@ func main() {
 	http.HandleFunc("/upload", uploadHandler)
 
 	fmt.Println("Starting server on :4242")
+	// if err := http.ListenAndServe(":4242", nil); err != nil {
+	// 	fmt.Println("Error starting server:", err)
+	// }
+
 	if err := http.ListenAndServeTLS(":4242", "server.crt", "server.key", nil); err != nil {
 		log.Fatalf("Could not start server: %s\n", err.Error())
 	}
